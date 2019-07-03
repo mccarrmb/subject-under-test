@@ -1,0 +1,18 @@
+env:
+  global:
+sudo: false
+language: ruby
+cache: bundler
+rvm:
+  - 2.4.4
+  - 2.5.0
+  - 2.5.1
+  - ruby-head
+before_install:
+before_script: 
+script: rubocop ruby/*
+after_script:
+matrix:
+  allow_failures:
+- rvm: ruby-head
+
