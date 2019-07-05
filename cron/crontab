@@ -1,0 +1,19 @@
+0 2 * * * /bin/sh backup.sh
+0 5,17 * * * /scripts/script.sh
+* * * * *  /scripts/script.sh
+0 17 * * sun  /scripts/script.sh
+*/10 * * * * /scripts/monitor.sh
+* * * jan,may,aug *  /script/script.sh
+0 17 * * sun,fri  /script/script.sh
+0 2 * * sun  [ $(date +%d) -le 07 ] && /script/script.sh
+0 */4 * * * /scripts/script.sh
+0 4,17 * * sun,mon /scripts/script.sh
+* * * * * /scripts/script.sh
+* * * * *  sleep 30; /scripts/script.sh
+* * * * * /scripts/script.sh; /scripts/scrit2.sh
+@yearly /scripts/script.sh
+@monthly /scripts/script.sh
+@weekly /bin/script.sh
+@daily /scripts/script.sh
+@hourly /scripts/script.sh
+@reboot /scripts/script.sh
