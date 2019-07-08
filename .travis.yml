@@ -2,7 +2,7 @@ matrix:
   include:
     - language: node_js
       node_js:
-        - "10.15.3"
+        - 10.15.3
       sudo: true
       install: ./csv-dependencies.bash
       script: ./integrity-check.bash
@@ -12,5 +12,6 @@ matrix:
       sudo: true
       install: ./csv-dependencies.bash
       script: ./integrity-check.bash
-    - install: ./csv-dependencies.bash
+    - language: minimal
+      install: ./csv-dependencies.bash
       script: ./integrity-check.bash
