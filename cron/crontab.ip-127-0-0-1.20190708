@@ -10,7 +10,7 @@
 0 4,17 * * sun,mon /scripts/script.sh
 * * * * * /scripts/script.sh
 * * * * *  sleep 30; /scripts/script.sh
-* * * * * /scripts/script.sh; /scripts/scrit2.sh
+/scripts/script.sh; /scripts/scrit2.sh
 @yearly /scripts/script.sh
 @monthly /scripts/script.sh
 @weekly /bin/script.sh
