@@ -3,7 +3,7 @@ export FAILURE=0
 
 function csv_checks {
   echo -e "\e[1;33mChecking $1...\e[0m"
-  csvlint "$1"
+  csvlint "$1" 1>/dev/null
   if [ $? -gt 0 ] ; then
     echo -e "\e[1;31m$1 failed check.\e[0m"
     FAILURE=1
