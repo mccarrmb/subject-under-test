@@ -13,7 +13,6 @@ def gcd(first, second)
     gcd(second, first%second)
   else
     first
-  end
 end
 
 def lcm(first, second)

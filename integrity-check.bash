@@ -5,7 +5,7 @@ export FAILURE=0
 function csv_checks {
   echo -e "\e[1;33mChecking $1...\e[0m"
   csvlint "$1" 1>/dev/null
-  if [ $? -gt 0 ] ; then
+  if [ $? -gt 0 ]; then
     echo -e "\e[1;31m$1 failed check.\e[0m"
     FAILURE=1
   else
@@ -17,7 +17,19 @@ function csv_checks {
 function xml_checks {
   echo -e "\e[1;33mChecking $1...\e[0m"
   xmllint "$1" 1>/dev/null
-  if [ $? -gt 0 ] ; then
+  if [ $? -gt 0 ]; then
+    echo -e "\e[1;31m$1 failed check.\e[0m"
+    FAILURE=1
+  else
+    echo -e "\e[1;32m$1 passed checks.\e[0m"
+  fi
+}
+
+# XML verification
+function ruby_checks {
+  echo -e "\e[1;33mChecking $1...\e[0m"
+  ruby -c "$1" 1>/dev/null
+  if [ $? -gt 0 ]; then
     echo -e "\e[1;31m$1 failed check.\e[0m"
     FAILURE=1
   else
@@ -36,11 +48,13 @@ for file in $modified_files; do
   # even if it is added and then subsequently deleted in this branch.
   if [ -f "$file" ]; then
     # CSV file
-    if [[ "$file" == *.csv ]] ; then
+    if [[ "$file" == *.csv ]]; then
       csv_checks "$file"
     # XML file
     elif [[ "$file" == *.xml || "$file" == *.xsd || "$file" == *.xlst ]]; then
       xml_checks "$file"
+    elif [[ "$file" == *.rb || "$file" == Rakefile ]]; then
+      ruby_checks "$file"
     fi
   fi
 done

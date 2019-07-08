@@ -9,7 +9,7 @@ def linear_search(array, key)
   return nil
 end
 
-puts "Enter a space-separated list:"
+puts "Enter a space-separated list, jerk:"
 arr = gets.chomp.split(' ').map(&:to_i)
 puts "Enter a value to be searched:"
 key = gets.chomp.to_i
