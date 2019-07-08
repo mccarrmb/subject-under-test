@@ -31,7 +31,7 @@ current_branch=`git rev-parse --abbrev-ref HEAD`
 modified_files=`git diff --diff-filter=CMART --name-only $current_branch master`
 
 # Run checks over modified file blob
-for file in $modified_files; do
+for file in $modified_files; then
   # Since git diff is comparing to master, a file technically counts as being added 
   # even if it is added and then subsequently deleted in this branch.
   if [ -f "$file" ]; do
