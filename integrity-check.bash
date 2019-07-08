@@ -8,7 +8,7 @@ function csv_checks {
     echo -e "\e[1;31m$1 failed check.\e[0m"
     FAILURE=1
   else
-    echo -e "\e[1;92m$1 passed checks.\e[0m"
+    echo -e "\e[1;32m$1 passed checks.\e[0m"
   fi
 }
 
