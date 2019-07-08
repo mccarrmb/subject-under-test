@@ -77,11 +77,15 @@ for file in $modified_files; do
     # XML file
     elif [[ "$file" == *.xml || "$file" == *.xsd || "$file" == *.xlst ]]; then
       xml_checks "$file"
+    # Ruby file
     elif [[ "$file" == *.rb || "$file" == Rakefile ]]; then
       ruby_checks "$file"
+    # Python file
     elif [[ "$file" == *.py ]]; then
       python_checks "$file"
-    elif [[ "$file" == crontab.ip* ]]; then
+    # Crontab file 
+    # TODO: should really be regex
+    elif [[ "$file" == *crontab.ip* ]]; then
       crontab_checks "$file"
     fi
   fi
