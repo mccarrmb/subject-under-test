@@ -10,9 +10,9 @@ rvm:
   - ruby-head
 before_install:
 before_script: 
-script: rubocop ruby/*
+script: ./integrity-check.bash
 after_script:
 matrix:
   allow_failures:
-- rvm: ruby-head
+  - rvm: ruby-head
 
