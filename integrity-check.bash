@@ -85,7 +85,7 @@ for file in $modified_files; do
       python_checks "$file"
     # Crontab file 
     # TODO: should really be regex
-    elif [[ "$file" == *crontab.ip* ]]; then
+    elif [[ "$file" == *crontab* ]]; then
       crontab_checks "$file"
     fi
   fi
