@@ -4,14 +4,23 @@ matrix:
       node_js:
         - 10.15.3
       sudo: true
-      install: ./csv-dependencies.bash
+      before_install: sudo apt update
+      install: 
+        - ./csv-dependencies.bash
+        - ./xml-dependencies.bash
       script: ./integrity-check.bash
     - language: ruby
       rvm:
         - 2.5.0
       sudo: true
-      install: ./csv-dependencies.bash
+      before_install: sudo apt update
+      install: 
+        - ./csv-dependencies.bash
+        - ./xml-dependencies.bash
       script: ./integrity-check.bash
     - language: minimal
-      install: ./csv-dependencies.bash
+      before_install: sudo apt update
+      install: 
+        - ./csv-dependencies.bash
+        - ./xml-dependencies.bash
       script: ./integrity-check.bash
