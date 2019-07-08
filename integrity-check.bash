@@ -1,62 +1,23 @@
 #!/bin/bash
 
-# Get list of changed files in this branch
-git diff --name-only master `git rev-parse --abbrev-ref HEAD`
+# Get diff of changed files in this branch compared to master
+current_branch=`git rev-parse --abbrev-ref HEAD`
+modified_files=`git diff --name-only origin/master $current_branch`
 
-find . -type f -name "*.sql"
+# Run checks over modified file blob
+for file in $modified_files; do
+    echo "Checking $file..."
+    if [[ $file == *.csv ]] ; then
+      csvlint "$file"
+    fi
+    echo "Check complete."
+done
 
-
-
-
-function check_mysql {
-
-}
-
-function check_postgresql {
-
-}
-
-function check_csv {
+#find . -type f -name "*."
     # sudo apt install golang-go
     # export PATH="$PATH:$HOME/go/bin"
     # go get github.com/Clever/csvlint/cmd/csvlint
     # csvlint [loop over blob]
-
+function csv_checks {
+  csvlint $1
 }
-
-function check_xml {
-    
-}
-
-function check_scala {
-    
-}
-
-function check_java {
-    
-}
-
-function check_ruby {
-    
-}
-
-function check_perl {
-    
-}
-
-function check_nodejs {
-    
-}
-
-function check_javascript {
-    
-}
-
-function check_python {
-    
-}
-
-function check_cron {
-    
-}
-
