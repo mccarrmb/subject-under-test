@@ -1,6 +1,7 @@
 #!/bin/bash
 export FAILURE=0
 
+#CSV verification
 function csv_checks {
   echo -e "\e[1;33mChecking $1...\e[0m"
   csvlint "$1" 1>/dev/null
@@ -12,6 +13,7 @@ function csv_checks {
   fi
 }
 
+# XML verification
 function xml_checks {
   echo -e "\e[1;33mChecking $1...\e[0m"
   xmllint "$1" 1>/dev/null
@@ -29,14 +31,18 @@ current_branch=`git rev-parse --abbrev-ref HEAD`
 modified_files=`git diff --diff-filter=CMART --name-only $current_branch master`
 
 # Run checks over modified file blob
-for file in $modified_files; do    
+for file in $modified_files; do
+  # Since git diff is comparing to master, a file technically counts as being added 
+  # even if it is added and then subsequently deleted in this branch.
+  if [ -f "$file" ]; do
     # CSV file
     if [[ "$file" == *.csv ]] ; then
       csv_checks "$file"
+    # XML file
     elif [[ "$file" == *.xml || "$file" == *.xsd || "$file" == *.xlst ]]; then
       xml_checks "$file"
     fi
-
+  done
 done
 
 exit $FAILURE
