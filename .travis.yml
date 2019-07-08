@@ -4,8 +4,7 @@ matrix:
       node_js:
         - "10.15.3"
       sudo: true
-      install: sudo apt install golang
-      before_script: export PATH="$PATH:$HOME/go/bin"
+      install: ./csv-dependencies.bash
       script: ./integrity-check.bash
     - language: ruby
       rvm:
