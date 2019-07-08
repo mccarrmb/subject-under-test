@@ -10,8 +10,9 @@ function csv_checks {
 }
 
 # Get diff of changed files in this branch compared to master
+git fetch origin master
 current_branch=`git rev-parse --abbrev-ref HEAD`
-modified_files=`git diff --name-only origin/master`
+modified_files=`git diff --name-only $current_branch master`
 
 # Run checks over modified file blob
 for file in $modified_files; do
