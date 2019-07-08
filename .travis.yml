@@ -3,18 +3,12 @@ matrix:
     - language: node_js
       node_js:
         - "10.15.3"
-      before_script: 
+      install: apt install golang
+      before_script: export PATH="$PATH:$HOME/go/bin"
       script: ./integrity-check.bash
-      after_script:
     - language: ruby
       rvm:
-        - 2.4.4
         - 2.5.0
-        - 2.5.1
-        - ruby-head
-      before_script: 
+      install: apt install golang
+      before_script: export PATH="$PATH:$HOME/go/bin" 
       script: ./integrity-check.bash
-      after_script:
-  allow_failures:
-    - rvm: ruby-head
-
