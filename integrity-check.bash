@@ -14,7 +14,7 @@ function csv_checks {
 
 function xml_checks {
   echo -e "\e[1;33mChecking $1...\e[0m"
-  xmllint "$1"
+  xmllint "$1" 1>/dev/null
   if [ $? -gt 0 ] ; then
     echo -e "\e[1;31m$1 failed check.\e[0m"
     FAILURE=1
