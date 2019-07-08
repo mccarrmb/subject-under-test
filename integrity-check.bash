@@ -17,6 +17,10 @@ function check_postgresql {
 }
 
 function check_csv {
+    # sudo apt install golang-go
+    # export PATH="$PATH:$HOME/go/bin"
+    # go get github.com/Clever/csvlint/cmd/csvlint
+    # csvlint [loop over blob]
 
 }
 
