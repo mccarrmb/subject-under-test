@@ -4,13 +4,13 @@ matrix:
       node_js:
         - "10.15.3"
       sudo: true
-      install: sudo apt install golang-go
+      install: sudo apt install golang
       before_script: export PATH="$PATH:$HOME/go/bin"
       script: ./integrity-check.bash
     - language: ruby
       rvm:
         - 2.5.0
       sudo: true
-      install: sudo apt install golang-go
+      install: sudo apt install golang
       before_script: export PATH="$PATH:$HOME/go/bin" 
       script: ./integrity-check.bash
