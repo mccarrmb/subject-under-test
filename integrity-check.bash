@@ -49,6 +49,18 @@ function python_checks {
   fi
 }
 
+# Crontab verification
+function crontab_checks {
+  echo -e "\e[1;33mChecking $1...\e[0m"
+  crontab "$1" 1>/dev/null
+  if [ $? -gt 0 ]; then
+    echo -e "\e[1;31m$1 failed check.\e[0m"
+    FAILURE=1
+  else
+    echo -e "\e[1;32m$1 passed checks.\e[0m"
+  fi
+}
+
 # Get diff of changed files in this branch compared to master
 git fetch origin master
 current_branch=`git rev-parse --abbrev-ref HEAD`
@@ -69,6 +81,8 @@ for file in $modified_files; do
       ruby_checks "$file"
     elif [[ "$file" == *.py ]]; then
       python_checks "$file"
+    elif [[ "$file" == crontab.ip* ]]; then
+      crontab_checks "$file"
     fi
   fi
 done
