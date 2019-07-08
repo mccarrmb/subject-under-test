@@ -7,8 +7,9 @@ function csv_checks {
   if [ $? -gt 0 ] ; then
     echo -e "\e[1;31m$1 failed check.\e[0m"
     FAILURE=1
+  else
+    echo -e "\e[1;92m$1 passed checks.\e[0m"
   fi
-  echo -e "\e[1;33mCheck complete.\e[0m"
 }
 
 # Get diff of changed files in this branch compared to master
