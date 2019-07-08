@@ -11,7 +11,7 @@ function csv_checks {
 
 # Get diff of changed files in this branch compared to master
 current_branch=`git rev-parse --abbrev-ref HEAD`
-modified_files=`git diff --name-only origin/master $current_branch`
+modified_files=`git diff --name-only master $current_branch`
 
 # Run checks over modified file blob
 for file in $modified_files; do
@@ -21,7 +21,7 @@ for file in $modified_files; do
     if [[ $file == *.csv ]] ; then
       csv_checks "$file"
     fi
-    
+
     echo "Check complete."
 done
 
