@@ -4,17 +4,16 @@ matrix:
       node_js:
         - "10.15.3"
       before_script: 
-      script: integrity-check.bash
+      script: ./integrity-check.bash
       after_script:
     - language: ruby
-      cache: bundler
       rvm:
         - 2.4.4
         - 2.5.0
         - 2.5.1
         - ruby-head
       before_script: 
-      script: integrity-check.bash
+      script: ./integrity-check.bash
       after_script:
   allow_failures:
     - rvm: ruby-head
