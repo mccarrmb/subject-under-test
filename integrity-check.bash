@@ -42,7 +42,7 @@ for file in $modified_files; do
     elif [[ "$file" == *.xml || "$file" == *.xsd || "$file" == *.xlst ]]; then
       xml_checks "$file"
     fi
-  done
+  fi
 done
 
 exit $FAILURE
