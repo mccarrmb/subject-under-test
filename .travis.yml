@@ -18,6 +18,34 @@ matrix:
         - ./csv-dependencies.bash
         - ./xml-dependencies.bash
       script: ./integrity-check.bash
+    - language: perl
+      perl:
+        - 5.18.4
+      install: 
+        - ./csv-dependencies.bash
+        - ./xml-dependencies.bash
+      script: ./integrity-check.bash
+    - language: scala
+      scala:
+        - 2.11.11
+      install: 
+        - ./csv-dependencies.bash
+        - ./xml-dependencies.bash
+      script: ./integrity-check.bash
+    - language: java
+      jdk:
+        - oraclejdk8
+      install: 
+        - ./csv-dependencies.bash
+        - ./xml-dependencies.bash
+      script: ./integrity-check.bash
+    - language: python
+      python:
+        - 2.7
+      install: 
+        - ./csv-dependencies.bash
+        - ./xml-dependencies.bash
+      script: ./integrity-check.bash
     - language: minimal
       before_install: sudo apt update
       install: 
