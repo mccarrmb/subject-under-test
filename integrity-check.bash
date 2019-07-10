@@ -1,9 +1,12 @@
 #!/bin/bash
 export FAILURE=0
 
+export CLASSPATH=".:/antlr/antlr.jar:$CLASSPATH"
+alias antlr4='java -jar antlr/antlr.jar'
+alias grun='java org.antlr.v4.gui.TestRig'
+
 #CSV verification
 function csv_checks {
-  echo -e "\e[1;33mChecking $1...\e[0m"
   csvlint "$1" 1>/dev/null
   if [ $? -gt 0 ]; then
     echo -e "\e[1;31m$1 failed check.\e[0m"
@@ -15,7 +18,6 @@ function csv_checks {
 
 # XML verification
 function xml_checks {
-  echo -e "\e[1;33mChecking $1...\e[0m"
   xmllint "$1" 1>/dev/null
   if [ $? -gt 0 ]; then
     echo -e "\e[1;31m$1 failed check.\e[0m"
@@ -27,7 +29,6 @@ function xml_checks {
 
 # Ruby verification
 function ruby_checks {
-  echo -e "\e[1;33mChecking $1...\e[0m"
   ruby -c "$1" 1>/dev/null
   if [ $? -gt 0 ]; then
     echo -e "\e[1;31m$1 failed check.\e[0m"
@@ -39,7 +40,6 @@ function ruby_checks {
 
 # Python verification
 function python_checks {
-  echo -e "\e[1;33mChecking $1...\e[0m"
   python -m py_compile "$1" 1>/dev/null
   if [ $? -gt 0 ]; then
     echo -e "\e[1;31m$1 failed check.\e[0m"
@@ -51,8 +51,18 @@ function python_checks {
 
 # Crontab verification
 function crontab_checks {
-  echo -e "\e[1;33mChecking $1...\e[0m"
   crontab "$1" 1>/dev/null
+  if [ $? -gt 0 ]; then
+    echo -e "\e[1;31m$1 failed check.\e[0m"
+    FAILURE=1
+  else
+    echo -e "\e[1;32m$1 passed checks.\e[0m"
+  fi
+}
+
+# Crontab verification
+function java_checks {
+  javac "$1" 1>/dev/null
   if [ $? -gt 0 ]; then
     echo -e "\e[1;31m$1 failed check.\e[0m"
     FAILURE=1
@@ -72,21 +82,31 @@ for file in $modified_files; do
   # even if it is added and then subsequently deleted in this branch.
   if [ -f "$file" ]; then
     # CSV file
-    if [[ "$file" == *.csv ]]; then
-      csv_checks "$file"
-    # XML file
-    elif [[ "$file" == *.xml || "$file" == *.xsd || "$file" == *.xlst ]]; then
-      xml_checks "$file"
-    # Ruby file
-    elif [[ "$file" == *.rb || "$file" == Rakefile ]]; then
-      ruby_checks "$file"
-    # Python file
-    elif [[ "$file" == *.py ]]; then
-      python_checks "$file"
-    # Crontab file 
-    # TODO: should really be regex
-    elif [[ "$file" == *crontab* ]]; then
-      crontab_checks "$file"
+    echo -e "\e[1;33mChecking $1...\e[0m"
+    if [[ "$file" == *.csv || "$file" == *.xml || || "$file" == *.xsd || "$file" == *.xlst || \
+      "$file" == *.rb || "$file" == Rakefile || "$file" == *.py || "$file" == *crontab* || "$file" == *.java ]]; then
+
+      if [[ "$file" == *.csv ]]; then
+        csv_checks "$file"
+      # XML file
+      elif [[ "$file" == *.xml || "$file" == *.xsd || "$file" == *.xlst ]]; then
+        xml_checks "$file"
+      # Ruby file
+      elif [[ "$file" == *.rb || "$file" == Rakefile ]]; then
+        ruby_checks "$file"
+      # Python file
+      elif [[ "$file" == *.py ]]; then
+        python_checks "$file"
+      # Crontab file 
+      # TODO: should really be regex
+      elif [[ "$file" == *crontab* ]]; then
+        crontab_checks "$file"
+      elif [[ "$file" == *.java ]]; then
+        java_checks "$file"
+      fi
+
+    else
+      echo -e "\e[1;33m$1 has no verification defined.\e[0m"
     fi
   fi
 done

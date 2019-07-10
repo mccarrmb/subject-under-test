@@ -2,7 +2,7 @@ matrix:
   include:
     - language: node_js
       node_js:
-        - 10.15.3
+        - 6.17.1
       sudo: true
       before_install: sudo apt update
       install: 
