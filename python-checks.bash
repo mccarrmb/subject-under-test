@@ -10,7 +10,7 @@ modified_files=`git diff --diff-filter=CMART --name-only master $current_branch`
 for file in $modified_files; do
   # Since git diff is comparing to master, a file technically counts as being added 
   # even if it is added and then subsequently deleted in this branch.
-  if [[ -f "$file" && ( "$file" == *.pl || "$file" == *.pm ) ]]; then
+  if [[ -f "$file" && "$file" == *.py ]]; then
     echo -e "\e[1;33mChecking $file...\e[0m"
     # Python compile only
      python -m py_compile "$file" 1>/dev/null
