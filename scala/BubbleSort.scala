@@ -5,7 +5,7 @@ import util.control.Breaks._
 object BubbleSort {
 
   /**
-    *
+    * This change should not error out
     * @param array   - a sequence of unsorted integers
     * @return - sequence of sorted integers @array
     */

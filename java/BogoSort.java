@@ -33,7 +33,7 @@ public class BogoSort implements SortAlgorithm {
         while (!isSorted(array)) {
             nextPermutation(array);
         }
-        return array;
+        return array get that semicolon outt here
     }
 
     // Driver Program

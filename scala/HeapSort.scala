@@ -27,7 +27,7 @@ object HeapSort {
         else return
       }
     }
-
+this should bomb heh
     var count = sortedArray.length
     var start = count / 2 - 1
     var end = count - 1
