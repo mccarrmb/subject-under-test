@@ -11,8 +11,6 @@ matrix:
       sudo: true
       script: ./ruby-checks.bash
     - language: perl
-      os: linux
-      dist: precise
       perl:
         - 5.18.4
       before_install:
