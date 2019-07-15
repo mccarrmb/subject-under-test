@@ -4,51 +4,31 @@ matrix:
       node_js:
         - 6.17.1
       sudo: true
-      before_install: sudo apt update
-      install: 
-        - ./csv-dependencies.bash
-        - ./xml-dependencies.bash
-      script: ./integrity-check.bash
+      script: ./js-checks.bash
     - language: ruby
       rvm:
         - 2.5.0
       sudo: true
-      before_install: sudo apt update
-      install: 
-        - ./csv-dependencies.bash
-        - ./xml-dependencies.bash
-      script: ./integrity-check.bash
+      script: ./ruby-checks.bash
     - language: perl
       perl:
         - 5.18.4
-      install: 
-        - ./csv-dependencies.bash
-        - ./xml-dependencies.bash
-      script: ./integrity-check.bash
+      script: ./perl-checks.bash
     - language: scala
       scala:
         - 2.11.11
-      install: 
-        - ./csv-dependencies.bash
-        - ./xml-dependencies.bash
-      script: ./integrity-check.bash
+      script: ./scala-checks.bash
     - language: java
       jdk:
         - openjdk8
-      install: 
-        - ./csv-dependencies.bash
-        - ./xml-dependencies.bash
-      script: ./integrity-check.bash
+      script: ./java-checks.bash
     - language: python
       python:
         - 2.7
-      install: 
-        - ./csv-dependencies.bash
-        - ./xml-dependencies.bash
-      script: ./integrity-check.bash
+      script: ./python-checks.bash
     - language: minimal
       before_install: sudo apt update
       install: 
         - ./csv-dependencies.bash
         - ./xml-dependencies.bash
-      script: ./integrity-check.bash
+      script: ./misc-checks.bash
