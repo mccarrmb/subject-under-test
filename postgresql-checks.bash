@@ -3,13 +3,13 @@
 export FAILURE=0
 
 function postgresql_check() {
-  lint_result=`psql -U postgres -d postgresql_test -f $1 2>&1`;
-  if [[ "$lint_result" == *ERROR:\ syntax\ error* ]]; then
-    echo $lint_result
+  result=`psql -U postgres -d postgresql_test -f $1 2>&1`;
+  if [[ $result == *ERROR:\ syntax\ error* ]]; then
+    echo $result
     echo -e "\e[1;31m$1 failed check.\e[0m"
     FAILURE=1
   else
-    echo $lint_result
+    echo $result
     echo -e "\e[1;32m$1 passed checks.\e[0m"
   fi;
 }
