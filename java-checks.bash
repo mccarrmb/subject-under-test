@@ -6,6 +6,8 @@ git fetch origin master
 current_branch=`git rev-parse --abbrev-ref HEAD`
 modified_files=`git diff --diff-filter=CMART --name-only master $current_branch`
 
+export CLASSPATH="./java;$CLASSPATH"
+
 # Run checks over modified file blob
 for file in $modified_files; do
   # Since git diff is comparing to master, a file technically counts as being added 
