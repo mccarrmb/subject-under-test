@@ -11,8 +11,9 @@ matrix:
       sudo: true
       script: ./ruby-checks.bash
     - language: perl
+      sudo: false
       perl:
-        - 5.30
+        - "5.18"
       script: ./perl-checks.bash
     - language: scala
       scala:
