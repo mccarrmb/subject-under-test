@@ -4,7 +4,7 @@ export FAILURE=0
 
 function postgresql_check() {
   result=`psql -U postgres -d postgresql_test -f $1 2>&1`
-  if echo "$result" | grep -q "ERROR: syntax error" ; then
+  if echo $result | grep -q "ERROR: syntax error" ; then
     echo $result
     echo -e "\e[1;31m$1 failed check.\e[0m"
     FAILURE=1
