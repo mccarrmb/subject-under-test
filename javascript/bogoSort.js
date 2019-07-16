@@ -1,6 +1,6 @@
 /*
 * A simple helper function that checks, if the array is
-* sorted in ascending order.
+* sorted in ascending order. This should not cause an error
 */
 Array.prototype.isSorted = function() {
 
