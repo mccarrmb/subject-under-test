@@ -5,6 +5,7 @@ export FAILURE=0
 function mysql_check() {
   lint_result=`mysql -uroot -h127.0.0.1 mysql_test -f -b < $1 2>&1`;
   if [ "`echo $lint_result | sed -r \"s/ERROR ([0-9]*).*/\1/g\"`" = "1064" ]; then
+    echo $lint_result
     echo -e "\e[1;31m$1 failed check.\e[0m"
     FAILURE=1
   else
