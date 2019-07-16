@@ -10,8 +10,9 @@ modified_files=`git diff --diff-filter=CMART --name-only master $current_branch`
 for file in $modified_files; do
   # Since git diff is comparing to master, a file technically counts as being added 
   # even if it is added and then subsequently deleted in this branch.
-  echo -e "\e[1;33mChecking $file...\e[0m"
+  
   if [[ -f "$file" && "$file" == *.rb ]]; then
+    echo -e "\e[1;33mChecking $file...\e[0m"
     #Ruby compiler
     ruby -c "$file" 1>/dev/null
     if [ $? -gt 0 ]; then
