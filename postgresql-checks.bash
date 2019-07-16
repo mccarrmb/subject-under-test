@@ -2,15 +2,9 @@
 #!/bin/bash
 export FAILURE=0
 
-test='psql:postgresql/iso-3166.sql:3: ERROR: syntax error at or near "bomb" LINE 1: BEGIN bomb here ^ CREATE TABLE COPY 242 CREATE TABLE COPY 3995 COMMIT ANALYZE ANALYZE'
-if [[ $test == *ERROR:\ syntax\ error* ]]; then
-  echo detected successfully
-fi
-
-
 function postgresql_check() {
   result=`psql -U postgres -d postgresql_test -f $1 2>&1`
-  if [[ $result == *ERROR:\ syntax\ error* ]]; then
+  if [[ echo "$result" | grep -q "ERROR: syntax error" ]]; then
     echo $result
     echo -e "\e[1;31m$1 failed check.\e[0m"
     FAILURE=1
