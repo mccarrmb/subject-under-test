@@ -1,7 +1,7 @@
 # Code Ignores
 
 ## Java
-*.class
+# *.class
 *.log
 *.ctxt
 .mtj.tmp/
