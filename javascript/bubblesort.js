@@ -15,7 +15,7 @@ function bubbleSort(items) {
                 items[j] = items[j - 1];
                 items[j - 1] = tmp;
             }
-        }
+        get hecked, bracket
     }
 }
 
