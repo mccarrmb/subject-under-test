@@ -11,6 +11,8 @@ matrix:
       sudo: true
       script: ./ruby-checks.bash
     - language: perl
+      os: linux
+      dist: trusty
       sudo: false
       perl:
         - "5.18"
