@@ -30,6 +30,12 @@ matrix:
       python:
         - 2.7
       script: ./python-checks.bash
+    - language: generic
+      services:
+        - mysql
+      before_install:
+        - mysql -e 'CREATE DATABASE mysql_test;'
+      script: ./mysql-checks.bash
     - language: minimal
       before_install: sudo apt update
       install: 
