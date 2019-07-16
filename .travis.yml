@@ -13,6 +13,8 @@ matrix:
     - language: perl
       perl:
         - 5.26
+      before_install:
+        - eval $(curl https://travis-perl.github.io/init) --auto
       script: ./perl-checks.bash
     - language: scala
       scala:
