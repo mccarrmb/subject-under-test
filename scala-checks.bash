@@ -10,6 +10,5 @@ if [ $? -gt 0 ]; then
 else
   echo -e "\e[1;32mScala project passed checks.\e[0m"
 fi
-done
 
 exit $FAILURE
