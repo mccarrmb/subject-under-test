@@ -16,7 +16,7 @@ matrix:
       sudo: false
       perl:
         - "5.18"
-      install: echo Overriding CPANM
+      install: perl -v
       script: ./perl-checks.bash
     - language: scala
       scala:
