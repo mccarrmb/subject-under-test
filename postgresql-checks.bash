@@ -4,7 +4,7 @@ export FAILURE=0
 
 function postgresql_check() {
   lint_result=`psql -U postgres -d postgresql_test -f $1 2>&1`;
-  if [[ "$lint_result" == *\ ERROR\ \ syntax\ error* ]]; then
+  if [[ "$lint_result" == *ERROR:\ syntax\ error* ]]; then
     echo $lint_result
     echo -e "\e[1;31m$1 failed check.\e[0m"
     FAILURE=1
