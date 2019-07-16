@@ -12,9 +12,7 @@ matrix:
       script: ./ruby-checks.bash
     - language: perl
       perl:
-        - 5.26
-      before_install:
-        - eval $(curl https://travis-perl.github.io/init) --auto
+        - 5.30
       script: ./perl-checks.bash
     - language: scala
       scala:

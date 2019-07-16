@@ -1,6 +1,5 @@
 #!/bin/bash
 export FAILURE=0
-export CLASSPATH="./java;$CLASSPATH"
 
 echo -e "\e[1;33mChecking Java project...\e[0m"
 # Java compiler
