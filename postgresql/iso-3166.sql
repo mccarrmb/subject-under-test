@@ -1,4 +1,4 @@
-BEGIN;
+BEGIN bomb here
 
 SET client_encoding TO 'UNICODE';
 

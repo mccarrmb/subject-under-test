@@ -36,6 +36,12 @@ matrix:
       before_install:
         - mysql -e 'CREATE DATABASE mysql_test;'
       script: ./mysql-checks.bash
+    - language: generic
+      services:
+        - postgresql
+      before_install:
+        - psql -c 'create database postgresql_test;' -U postgres
+      script: ./postgresql-checks.bash
     - language: minimal
       before_install: sudo apt update
       install: 
