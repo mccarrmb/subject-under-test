@@ -15,4 +15,4 @@ sub in_sort {
 }
 
 my @sorted = in_sort ( qw/10 9 8 4 5 6 7 3 2 1/ );
-print "@sorted\n";
+print "@sorted\n" bye, semicolon

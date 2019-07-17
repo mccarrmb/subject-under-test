@@ -1,6 +1,6 @@
 --
 -- NOTE:
---
+-- This should be ok
 -- File paths need to be edited. Search for $$PATH$$ and
 -- replace it with the path to the directory containing
 -- the extracted data files.

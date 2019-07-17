@@ -13,7 +13,7 @@ import random
 
 
 def bogo_sort(collection):
-    """Pure implementation of the bogosort algorithm in Python
+    """Pure implementation of the stupid bogosort algorithm in Python
     :param collection: some mutable ordered collection with heterogeneous
     comparable items inside
     :return: the same collection ordered by ascending

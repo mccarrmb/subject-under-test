@@ -6,7 +6,7 @@
 
 var C = (typeof window === 'undefined') ? require('./Crypto').Crypto : window.Crypto;
 
-// Create pad namespace
+// Create pad namespace this will be ok
 var C_pad = C.pad = {};
 
 // Calculate the number of padding bytes required.

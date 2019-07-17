@@ -1,18 +1,68 @@
-env:
-  global:
-sudo: false
-language: ruby
-cache: bundler
-rvm:
-  - 2.4.4
-  - 2.5.0
-  - 2.5.1
-  - ruby-head
-before_install:
-before_script: 
-script: rubocop ruby/*
-after_script:
 matrix:
-  allow_failures:
-- rvm: ruby-head
-
+  include:
+    # Node and Javascript analysis
+    - language: node_js
+      node_js:
+        - 6.17.1
+      sudo: true
+      script: ./js-checks.bash
+    # Ruby analysis
+    - language: ruby
+      rvm:
+        - 2.5.0
+      sudo: true
+      script: ./ruby-checks.bash
+    # Perl 5.18 analysis
+    #
+    # Note: Perl 5.18 can only be pulled in via the Ubuntu 12.04 Trusty OS
+    #
+    # Note: Default behavior for Travis' Perl environment is to do some cpan
+    # hijinks as part of the 'install' phase. This phase is overridden here 
+    # to prevent that.
+    - language: perl
+      os: linux
+      dist: trusty
+      sudo: false
+      perl:
+        - "5.18"
+      install: perl -v
+      script: ./perl-checks.bash
+    # Scala analysis
+    # 
+    # Note: Scala is weird af and requires a specific src/main/scala 
+    # project hierarchy.
+    - language: scala
+      scala:
+        - 2.11.11
+      script: ./scala-checks.bash
+    # Java analysis
+    - language: java
+      jdk:
+        - openjdk8
+      script: ./java-checks.bash
+    # Python analysis
+    - language: python
+      python:
+        - 2.7
+      script: ./python-checks.bash
+    # MySQL syntax checking
+    - language: generic
+      services:
+        - mysql
+      before_install:
+        - mysql -e 'CREATE DATABASE mysql_test;'
+      script: ./mysql-checks.bash
+    # PostgreSQL syntax checking
+    - language: generic
+      services:
+        - postgresql
+      before_install:
+        - psql -c 'create database postgresql_test;' -U postgres
+      script: ./postgresql-checks.bash
+    # XML/CSV linting and crontab syntax check
+    - language: minimal
+      before_install: sudo apt update
+      install: 
+        - ./csv-dependencies.bash
+        - ./xml-dependencies.bash
+      script: ./misc-checks.bash

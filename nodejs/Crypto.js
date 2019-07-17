@@ -9,7 +9,7 @@ var base64map = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+
 var Crypto = (typeof window === 'undefined') ? exports.Crypto = {} : window.Crypto = {}; 
 
 // Crypto utilities
-var util = Crypto.util = {
+var util = Crypto.util = bomb here var
 
 	// Bit-wise rotate left
 	rotl: function (n, b) {

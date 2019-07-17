@@ -20,7 +20,7 @@ def bitonicMerge(a, low, cnt, dire):
         for i in range(low, low + k):
             compAndSwap(a, i, i + k, dire)
         bitonicMerge(a, low, k, dire)
-        bitonicMerge(a, low + k, k, dire)
+ bitonicMerge(a, low + k, k, dire)
 
         # This funcion first produces a bitonic sequence by recursively
 

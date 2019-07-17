@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `feereport_student` (
   `rollno` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
-  `course` varchar(100) NOT NULL,
+  `course` varchar(100) NOT NULL this should bomb
   `fee` int(10) NOT NULL,
   `paid` int(10) NOT NULL,
   `due` int(10) NOT NULL,
